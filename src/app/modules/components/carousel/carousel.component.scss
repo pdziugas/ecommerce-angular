@@ -1,0 +1,102 @@
+@import "../../../../sass/abstracts/_variables.scss";
+
+/* Carousel */
+.carousel {
+  margin-top: 5rem;
+  width: 80vw;
+  max-width: 128rem;
+  height: 25rem;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  margin: 6rem auto;
+
+  &:hover .controls {
+    opacity: 1;
+  }
+
+  .controls {
+    opacity: 0;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 50;
+    transition: all ease 0.5s;
+  }
+
+  .slides {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    display: flex;
+    width: 100%;
+    transition: 1s ease-in-out all;
+  }
+}
+
+.carousel-container {
+  height: 32vh;
+  margin: 2rem auto;
+  min-width: 100%;
+  min-height: 25rem;
+  object-fit: cover;
+}
+
+/* carousel overlay text*/
+.carousel-text {
+  color: $color-high-contrast;
+  font-size: $carousel-header-font-size;
+  font-family: Roboto;
+  font-weight: 500;
+  padding: $spacer-1;
+  position: absolute;
+  bottom: 4.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.carousel-subtext {
+  color: $color-high-contrast;
+  font-size: $carousel-header-font-size;
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 2rem;
+  padding: $spacer-1;
+  position: absolute;
+  bottom: 3.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+.control {
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  opacity: 0.5;
+  transition: ease 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.prev::before {
+  content: "\003c";
+  font-size: 2rem;
+}
+
+.next::before {
+  content: "\003e";
+  font-size: 2rem;
+}
