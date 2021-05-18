@@ -1,7 +1,23 @@
-<div class="carousel">
-  <div class="slides"></div>
-  <div class="controls">
-    <div class="control prev" id="prev"></div>
-    <div class="control next" id="next"></div>
+<ng-container *ngIf="carouselItems$ | async as carouselItems; else loadingRef">
+  <div class="carousel">
+    <div #slides class="slides" [style.left.%]="leftVar" *ngFor="let item of carouselItems">
+      <figure class="carousel-container">
+        <a href="#{{ item.id }}">
+          <img src="{{ item.imageUrl }}" alt="slide image" />
+          <figcaption class="carousel-text">{{ item.title }}</figcaption>
+          <figcaption class="carousel-subtext">
+            {{ item.description }}
+          </figcaption>
+        </a>
+      </figure>
+    </div>
+    <div class="controls">
+      <div class="control prev" (click)="slidePrevious()"></div>
+      <div class="control next" (click)="slideNext()"></div>
+    </div>
   </div>
-</div>
+</ng-container>
+
+<ng-template #loadingRef>
+  <app-loader></app-loader>
+</ng-template>
