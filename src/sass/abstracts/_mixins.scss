@@ -1,28 +1,26 @@
-// CENTER HORIZONTAL VERTICAL
 @mixin center-horizontal-vertical {
-    transform: translate(-50%, -50%);
-  }
-  
-  // MEDIA QUERIES
-  @mixin respond($breakpoint) {
-    @if $breakpoint == phone {
-      //600px
-      @media only screen and (min-width: 37.5em) {
-        @content;
-      }
-    }
-    @if $breakpoint == tablet-portrait {
-      //900px
-      @media only screen and (min-width: 56.25em) {
-        @content;
-      }
-    }
-  
-    @if $breakpoint == tablet-landscape {
-      //1200px
-      @media only screen and (min-width: 75em) {
-        @content;
-      }
+  display: grid;
+  place-items: center;
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    //600px
+    @media only screen and (min-width: 37.5em) {
+      @content;
     }
   }
-  
+  @if $breakpoint == tablet-portrait {
+    //900px
+    @media only screen and (min-width: 56.25em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tablet-landscape {
+    //1200px
+    @media only screen and (min-width: 75em) {
+      @content;
+    }
+  }
+}

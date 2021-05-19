@@ -1,6 +1,5 @@
-@import "../../../../sass/abstracts/_variables.scss";
+@import "../../../sass/abstracts/_variables.scss";
 
-/* Carousel */
 .carousel {
   margin-top: 5rem;
   width: 80vw;
@@ -47,7 +46,6 @@
   object-fit: cover;
 }
 
-/* carousel overlay text*/
 .carousel-text {
   color: $color-high-contrast;
   font-size: $carousel-header-font-size;

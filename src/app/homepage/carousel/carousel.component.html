@@ -1,9 +1,9 @@
 <ng-container *ngIf="carouselItems$ | async as carouselItems; else loadingRef">
-  <div class="carousel">
-    <div #slides class="slides" [style.left.%]="leftVar" *ngFor="let item of carouselItems">
-      <figure class="carousel-container">
-        <a href="#{{ item.id }}">
-          <img src="{{ item.imageUrl }}" alt="slide image" />
+  <div class="carousel" *ngIf="carouselItems.length > 0">
+    <div #slides class="slides" [style.left.%]="slidesLeftStyleValue">
+      <figure class="carousel-container" *ngFor="let item of carouselItems">
+        <a [href]="item.id">
+          <img [src]="item.imageUrl" alt="slide image" />
           <figcaption class="carousel-text">{{ item.title }}</figcaption>
           <figcaption class="carousel-subtext">
             {{ item.description }}
