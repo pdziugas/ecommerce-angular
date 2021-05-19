@@ -1,4 +1,10 @@
 <app-navbar></app-navbar>
-<app-carousel></app-carousel>
-<!-- <app-carousel *ngIf="carouselItems$ | async as items" [items]="items"></app-carousel> -->
+<app-carousel
+  *ngIf="carouselItems$ | async as items; else loadingRef"
+  [items]="items"
+></app-carousel>
 <app-footer></app-footer>
+
+<ng-template #loadingRef>
+  <app-loader></app-loader>
+</ng-template>

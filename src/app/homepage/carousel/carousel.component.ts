@@ -1,6 +1,5 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { delay } from 'rxjs/operators';
-import { CarouselItemService } from '../../core/carousel-item.service';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { ICarouselItem } from '../../core/carousel-item.service';
 
 @Component({
   selector: 'app-carousel',
@@ -8,14 +7,7 @@ import { CarouselItemService } from '../../core/carousel-item.service';
   styleUrls: ['./carousel.component.scss'],
 })
 export class CarouselComponent {
-  carouselItems$ = this.carouselItemService
-    .fetchCarouselData()
-    .pipe(delay(2000));
-
-  constructor(
-    private carouselItemService: CarouselItemService,
-    private renderer: Renderer2
-  ) {}
+  @Input() items!: ICarouselItem[];
 
   @ViewChild('slides') slides!: ElementRef<HTMLElement>;
 
@@ -36,35 +28,41 @@ export class CarouselComponent {
   slidesLeftStyleValue = 0;
 
   showNextSlide = () => {
-    this.currentSlide +=
-      this.currentSlide > this.maxLeftSlide ? -100 : this.currentSlide * -1;
-    this.slidesLeftStyleValue = this.currentSlide;
+    const shouldRollForward = this.currentSlide > this.maxLeftSlide;
+    this.currentSlide += shouldRollForward ? -100 : this.currentSlide * -1;
+    this.currentPos;
   };
 
-  showPrevSlide = () => {
-    this.currentSlide =
-      this.currentSlide < 0 ? this.currentSlide + 100 : this.maxLeftSlide;
-    this.slidesLeftStyleValue = this.currentSlide;
-  };
+  showPrevSlide() {
+    const shouldRollBack = this.currentSlide < 0;
+    this.currentSlide = shouldRollBack
+      ? this.currentSlide + 100
+      : this.maxLeftSlide;
+    this.currentPos;
+  }
 
   autoChange = setInterval(this.showNextSlide, this.interval);
 
-  restartAutoChange = () => {
+  restartAutoChange() {
     clearInterval(this.autoChange);
     this.autoChange = setInterval(this.showNextSlide, this.interval);
-  };
+  }
 
-  slidePrevious = () => {
+  slidePrevious() {
     this.showPrevSlide();
     this.restartAutoChange();
-  };
+  }
 
-  slideNext = () => {
+  slideNext() {
     this.showNextSlide();
     this.restartAutoChange();
-  };
+  }
 
   private get leftPosition(): number {
     return (this.slidesCount - 1) * 100 * -1;
+  }
+
+  private get currentPos(): number {
+    return (this.slidesLeftStyleValue = this.currentSlide);
   }
 }
