@@ -1,0 +1,7 @@
+@import "../../../../sass/abstracts/_mixins.scss";
+
+p {
+  font-size: 10rem;
+  padding-top: 10rem;
+  @include center-horizontal-vertical;
+}

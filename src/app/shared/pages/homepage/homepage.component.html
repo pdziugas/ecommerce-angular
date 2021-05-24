@@ -1,0 +1,41 @@
+<app-carousel
+  *ngIf="carouselItems$ | async as items; else loadingRef"
+  [items]="items"
+></app-carousel>
+<app-catalog
+  *ngIf="catalogItems$ | async as items; else loadingRef"
+  [items]="items"
+></app-catalog>
+
+<div class="form-container">
+  <form class="contact" [formGroup]="form" (ngSubmit)="onFormSubmit()">
+    <h3>Add a new product</h3>
+    <input placeholder="Title" type="text" formControlName="title" />
+    <!-- <p *ngIf="form.value.title.dirty && form.value.title.hasError('required')">
+          Field is required
+        </p> -->
+    <!-- <small class="form-text text-danger">{{form.controls.userName.errorMessage}}<br/></small>    -->
+    <textarea
+      placeholder="Description"
+      type="text"
+      formControlName="description"
+    ></textarea>
+    <input placeholder="Price" type="number" formControlName="price" />
+    <input placeholder="Image Url" type="text" formControlName="imageUrl" />
+
+    <button
+      class="button-submit"
+      type="button submit"
+      [disabled]="form.invalid || form.pristine"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+
+<!-- <pre>{{ form.value | json }}</pre> -->
+<!-- <pre>{{ form.controls.name.getError | json }}</pre> -->
+
+<ng-template #loadingRef>
+  <app-loader></app-loader>
+</ng-template>

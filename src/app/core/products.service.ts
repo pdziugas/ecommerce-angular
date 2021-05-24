@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
 
 export interface IProduct {
   id: number;
@@ -20,6 +19,10 @@ export class ProductsService {
 
   fetchProductData = () => {
     return this.httpClient.get<IProduct[]>(this.productsEndpoint);
+  };
+
+  fetchItemData = (index: string) => {
+    return this.httpClient.get<IProduct>(`${this.productsEndpoint}/${index}`);
   };
 
   postItemData = (item: object) => {
