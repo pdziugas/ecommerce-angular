@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { ICarouselItem } from '../../core/carousel-item.service';
+import { ICarouselItem } from '../../../core/carousel-item.service';
 
 @Component({
   selector: 'app-carousel',
@@ -7,38 +7,28 @@ import { ICarouselItem } from '../../core/carousel-item.service';
   styleUrls: ['./carousel.component.scss'],
 })
 export class CarouselComponent {
-  @Input() items!: ICarouselItem[];
+  @Input() items: ICarouselItem[] = [];
 
   @ViewChild('slides') slides!: ElementRef<HTMLElement>;
 
   interval = 5000;
-  // TODO - need to somehow get actual array length. Would this be a good way to get child count?
-  /* 
-    // Accessing multiple native DOM elements using QueryList
-    @ViewChildren(HelloComponent) myValue: QueryList<HelloComponent>;
-
-    ngAfterViewInit() {
-     console.log("Hello ", this.myValue);
-    }
-  */
-  // basically I would need to create a component for slides
   slidesCount = 3;
   maxLeftSlide = this.leftPosition;
   currentSlide = 0;
   slidesLeftStyleValue = 0;
 
-  showNextSlide = () => {
+  showNextSlide() {
     const shouldRollForward = this.currentSlide > this.maxLeftSlide;
     this.currentSlide += shouldRollForward ? -100 : this.currentSlide * -1;
-    this.currentPos;
-  };
+    this.slidesLeftStyleValue = this.currentSlide;
+  }
 
   showPrevSlide() {
     const shouldRollBack = this.currentSlide < 0;
     this.currentSlide = shouldRollBack
       ? this.currentSlide + 100
       : this.maxLeftSlide;
-    this.currentPos;
+    this.slidesLeftStyleValue = this.currentSlide;
   }
 
   autoChange = setInterval(this.showNextSlide, this.interval);
@@ -56,13 +46,15 @@ export class CarouselComponent {
   slideNext() {
     this.showNextSlide();
     this.restartAutoChange();
+    console.log(this.leftPosition);
   }
 
   private get leftPosition(): number {
-    return (this.slidesCount - 1) * 100 * -1;
+    return (this.carouselLength - 1) * 100 * -1;
+    // return (this.slidesCount - 1) * 100 * -1;
   }
 
-  private get currentPos(): number {
-    return (this.slidesLeftStyleValue = this.currentSlide);
+  private get carouselLength(): number {
+    return this.items.length;
   }
 }

@@ -27,14 +27,14 @@
       "title": "testf",
       "description": "ttest3ttest3ttest3ttest3",
       "price": "2000",
-      "imageUrl": "https://placeimg.com/135/180/tech/8",
+      "imageUrl": "https://placeimg.com/135/180/tech/1",
       "id": 1
     },
     {
       "title": "testf",
       "description": "ttest3ttest3ttest3ttest3",
       "price": "2000",
-      "imageUrl": "https://placeimg.com/135/180/tech/8",
+      "imageUrl": "https://placeimg.com/135/180/tech/2",
       "id": 2
     },
     {
@@ -48,7 +48,7 @@
       "title": "test123",
       "description": "ttest3ttest3ttest3ttest3",
       "price": "200",
-      "imageUrl": "https://placeimg.com/135/180/tech/8",
+      "imageUrl": "https://placeimg.com/135/180/tech/4",
       "id": 4
     },
     {
@@ -59,25 +59,18 @@
       "imageUrl": "https://placeimg.com/135/180/tech/5"
     },
     {
-      "title": "test1234ff",
-      "description": "ttest3ttest3ttest3ttest3",
-      "price": "200",
-      "imageUrl": "https://placeimg.com/135/180/tech/8",
+      "title": "samsung test items",
+      "description": "iphone description",
+      "price": 99.99,
+      "imageUrl": "https://placeimg.com/135/180/tech/6",
       "id": 6
     },
     {
-      "title": "test1234ff",
-      "description": "ttest3ttest3ttest3ttest3",
-      "price": "200",
-      "imageUrl": "https://placeimg.com/135/180/tech/8",
-      "id": 7
-    },
-    {
-      "title": "sadf",
-      "description": "asdfdasf",
-      "price": "32432",
-      "imageUrl": "asdfasdf",
-      "id": 8
+      "title": "dsafddd",
+      "description": "adsf",
+      "price": 11,
+      "imageUrl": "https://placeimg.com/200/320/tech/1233",
+      "id": 40
     }
   ]
 }
