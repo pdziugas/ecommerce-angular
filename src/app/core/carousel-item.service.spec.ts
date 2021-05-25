@@ -1,16 +1,23 @@
 import { TestBed } from '@angular/core/testing';
-
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { CarouselItemService } from './carousel-item.service';
 
-describe('CarouselItemService', () => {
+fdescribe('carousel-item service', () => {
   let service: CarouselItemService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      declarations: [],
+      providers: [CarouselItemService],
+    });
     service = TestBed.inject(CarouselItemService);
   });
 
-  it('should be created', () => {
+  it('should create', () => {
     expect(service).toBeTruthy();
   });
 });

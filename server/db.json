@@ -45,13 +45,6 @@
       "imageUrl": "https://placeimg.com/135/180/tech/3"
     },
     {
-      "title": "test123",
-      "description": "ttest3ttest3ttest3ttest3",
-      "price": "200",
-      "imageUrl": "https://placeimg.com/135/180/tech/4",
-      "id": 4
-    },
-    {
       "id": 5,
       "title": "iPhone 5s",
       "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -59,18 +52,81 @@
       "imageUrl": "https://placeimg.com/135/180/tech/5"
     },
     {
+      "id": 6,
       "title": "samsung test items",
       "description": "iphone description",
       "price": 99.99,
-      "imageUrl": "https://placeimg.com/135/180/tech/6",
-      "id": 6
+      "imageUrl": "https://placeimg.com/135/180/tech/6"
     },
     {
-      "title": "dsafddd",
+      "id": 7,
+      "title": "iPhonsadfe 5s",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "price": 20,
+      "imageUrl": "https://placeimg.com/135/180/tech/7"
+    },
+    {
+      "title": "adsf",
+      "description": "adsf dasf jiadsof isadjf iodsajof oiasdfjoasdj fsda uifhads if huaidsh foiadshu fiadsh fu ahsdfoihasd ufhasiudf huiadsh fiohads oifh adsufdausf idasfadsf uidashf iadsf ",
+      "price": 123,
+      "imageUrl": "https://placeimg.com/135/180/tech/55",
+      "id": 8
+    },
+    {
+      "title": "test",
+      "description": "testtesttest",
+      "price": 123,
+      "imageUrl": "https://placeimg.com/200/320/tech/12",
+      "id": 10
+    },
+    {
+      "title": "testtest",
+      "description": "etstes",
+      "price": 3242,
+      "imageUrl": "https://placeimg.com/135/180/tech/24",
+      "id": 11
+    },
+    {
+      "title": "Test",
+      "description": "testtest",
+      "price": 99.99,
+      "imageUrl": "https://placeimg.com/200/320/tech/12",
+      "id": 36
+    },
+    {
+      "title": "test",
+      "description": "test",
+      "price": 123,
+      "imageUrl": "https://placeimg.com/200/320/tech/12",
+      "id": 37
+    },
+    {
+      "title": "test",
+      "description": "test",
+      "price": 123,
+      "imageUrl": "https://placeimg.com/200/320/tech/123",
+      "id": 38
+    },
+    {
+      "title": "dsafdddffd",
       "description": "adsf",
       "price": 11,
       "imageUrl": "https://placeimg.com/200/320/tech/1233",
       "id": 40
+    },
+    {
+      "id": 41,
+      "title": "asdfffff",
+      "description": "asdf",
+      "price": 33,
+      "imageUrl": "adsfdasff"
+    },
+    {
+      "title": "asdasdsad",
+      "description": "sadsadsadadsadsasadsadsadadsadsasadsadsadadsadsasadsadsadadsadsasadsadsadadsadsasadsadsadadsadsasadsadsadadsadsasadsadsadadsadsasadsadsadadsadsa\nsadsadsadadsadsasadsadsadadsadsasadsadsadadsadsa\nsadsadsadadsadsa",
+      "price": 111,
+      "imageUrl": "asd",
+      "id": 42
     }
   ]
 }

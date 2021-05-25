@@ -8,9 +8,8 @@ describe('NotFoundComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotFoundComponent ]
-    })
-    .compileComponents();
+      declarations: [NotFoundComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +20,9 @@ describe('NotFoundComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should contain 404', () => {
+    expect(component.notFound).toEqual('404');
   });
 });

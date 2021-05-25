@@ -1,7 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IProduct } from 'src/app/core/products.service';
-import { ProductsService } from '../../../core/products.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-catalog',
@@ -9,23 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./catalog.component.scss'],
 })
 export class CatalogComponent {
-  @Input() items: IProduct[] = [];
+  @Input() catalogItems: IProduct[] = [];
+  @Output() itemEdit = new EventEmitter<IProduct>();
+  @Output() itemDelete = new EventEmitter<IProduct>();
 
-  constructor(
-    private productService: ProductsService,
-    private router: Router
-  ) {}
-
-  editProduct(id: number) {
-    this.router.navigate(['/edit', id]);
-  }
-
-  deleteProduct(id: number) {
-    let confirmation = confirm('Are you sure you want to delete this item?');
-    if (confirmation == true) {
-      this.productService.deleteItemData(id).subscribe(() => {
-        this.items = this.items.filter((item) => item.id !== id);
-      });
+  deleteProduct(product: IProduct): void {
+    const confirmation = confirm('Are you sure you want to delete this item?');
+    if (confirmation === true) {
+      this.itemDelete.emit(product);
     }
   }
 }

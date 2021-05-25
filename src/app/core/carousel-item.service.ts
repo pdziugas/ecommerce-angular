@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 export interface ICarouselItem {
   id: number;
@@ -17,7 +18,7 @@ export class CarouselItemService {
 
   private readonly carouselEndpoint = 'http://localhost:3000/carousel';
 
-  fetchCarouselData = () => {
+  fetchCarouselData(): Observable<ICarouselItem[]> {
     return this.httpClient.get<ICarouselItem[]>(this.carouselEndpoint);
-  };
+  }
 }

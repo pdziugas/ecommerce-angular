@@ -1,6 +1,10 @@
 <div class="form-container">
-  <!-- <form class="contact" [formGroup]="editForm" (ngSubmit)="onFormSubmit()"> -->
-  <form class="contact" [formGroup]="editForm">
+  <form
+    routerLinkActive="active"
+    class="contact"
+    [formGroup]="editForm"
+    (ngSubmit)="onFormSubmit()"
+  >
     <h3>Edit product</h3>
     <input placeholder="Title" type="text" formControlName="title" />
     <textarea
@@ -15,9 +19,7 @@
       <button class="button-cancel" type="button" routerLink="">Cancel</button>
       <button
         class="button-submit"
-        type="submit button"
-        routerLink=""
-        (click)="onFormSubmit()"
+        type="submit"
         [disabled]="editForm.invalid || editForm.pristine"
       >
         Edit

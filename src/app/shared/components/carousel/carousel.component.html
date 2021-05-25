@@ -1,6 +1,6 @@
-<div *ngIf="items.length > 0" class="carousel">
+<div *ngIf="carouselItems.length > 0" class="carousel">
   <div #slides class="slides" [style.left.%]="slidesLeftStyleValue">
-    <figure *ngFor="let item of items" class="carousel-container">
+    <figure *ngFor="let item of carouselItems" class="carousel-container">
       <a [href]="item.id">
         <img alt="slide image" [src]="item.imageUrl" />
         <figcaption class="carousel-text">{{ item.title }}</figcaption>

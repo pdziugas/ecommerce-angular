@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { delay, switchMap } from 'rxjs/operators';
 import { CarouselItemService } from '../../../core/carousel-item.service';
 import { IProduct, ProductsService } from '../../../core/products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -15,9 +16,11 @@ export class HomepageComponent {
     .fetchCarouselData()
     .pipe(delay(2000));
 
-  @Input() items: IProduct[] = [];
+  refreshItems$ = new BehaviorSubject<void>(undefined);
 
-  catalogItems$ = this.productsService.fetchProductData().pipe(delay(2000));
+  catalogItems$ = this.refreshItems$.pipe(
+    switchMap(() => this.productsService.fetchProductData())
+  );
 
   // reactive form
   form = this.fb.group({
@@ -27,33 +30,30 @@ export class HomepageComponent {
     imageUrl: [null, [Validators.required]],
   });
 
-  refreshItems$ = new BehaviorSubject<boolean>(true);
-
-  ngOnInit(): void {
-    this.catalogItems$ = this.refreshItems$.pipe(
-      switchMap(() => this.productsService.fetchProductData())
-    );
-  }
-
-  onFormSubmit() {
-    if (this.form.valid) {
-      console.log(this.form.value);
-      this.productsService.postItemData(this.form.value).subscribe((item) => {
-        this.items.push(item);
-      });
-      // this.catalogItems$ = this.refreshItems$.pipe(
-      //   switchMap(() => this.productsService.fetchProductData())
-      // );
-
-      this.refreshItems$.next(false);
-
-      this.form.reset();
-    }
-  }
-
   constructor(
     private carouselItemService: CarouselItemService,
     private productsService: ProductsService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {}
+
+  onFormSubmit(): void {
+    this.productsService.postItemData(this.form.value).subscribe(() => {
+      this.refreshItems$.next();
+      this.form.reset();
+    });
+  }
+
+  onDelete(product: IProduct): void {
+    this.productsService.deleteItemData(product.id).subscribe(() => {
+      this.refreshItems$.next();
+    });
+  }
+
+  onEdit(product: IProduct): void {
+    this.productsService.editItemData(product).subscribe(() => {
+      this.refreshItems$.next();
+      this.router.navigate(['edit', product.id]);
+    });
+  }
 }

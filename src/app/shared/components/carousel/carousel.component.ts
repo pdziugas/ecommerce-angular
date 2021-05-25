@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ICarouselItem } from '../../../core/carousel-item.service';
 
 @Component({
@@ -6,24 +6,32 @@ import { ICarouselItem } from '../../../core/carousel-item.service';
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss'],
 })
-export class CarouselComponent {
-  @Input() items: ICarouselItem[] = [];
-
+export class CarouselComponent implements OnInit {
+  @Input() carouselItems: ICarouselItem[] = [];
   @ViewChild('slides') slides!: ElementRef<HTMLElement>;
+  interval!: number;
+  currentSlide!: number;
+  slidesLeftStyleValue!: number;
+  slidesCount!: number;
+  maxLeftSlide!: number;
+  autoChange!: any;
 
-  interval = 5000;
-  slidesCount = 3;
-  maxLeftSlide = this.leftPosition;
-  currentSlide = 0;
-  slidesLeftStyleValue = 0;
+  ngOnInit(): void {
+    this.interval = 5000;
+    this.currentSlide = 0;
+    this.slidesLeftStyleValue = 0;
+    this.slidesCount = this.carouselLength;
+    this.maxLeftSlide = this.leftPosition;
+    this.autoChange = setInterval(this.showNextSlide, this.interval);
+  }
 
-  showNextSlide() {
+  showNextSlide(): void {
     const shouldRollForward = this.currentSlide > this.maxLeftSlide;
     this.currentSlide += shouldRollForward ? -100 : this.currentSlide * -1;
     this.slidesLeftStyleValue = this.currentSlide;
   }
 
-  showPrevSlide() {
+  showPrevSlide(): void {
     const shouldRollBack = this.currentSlide < 0;
     this.currentSlide = shouldRollBack
       ? this.currentSlide + 100
@@ -31,30 +39,26 @@ export class CarouselComponent {
     this.slidesLeftStyleValue = this.currentSlide;
   }
 
-  autoChange = setInterval(this.showNextSlide, this.interval);
-
-  restartAutoChange() {
+  restartAutoChange(): void {
     clearInterval(this.autoChange);
     this.autoChange = setInterval(this.showNextSlide, this.interval);
   }
 
-  slidePrevious() {
+  slidePrevious(): void {
     this.showPrevSlide();
     this.restartAutoChange();
   }
 
-  slideNext() {
+  slideNext(): void {
     this.showNextSlide();
     this.restartAutoChange();
-    console.log(this.leftPosition);
   }
 
   private get leftPosition(): number {
     return (this.carouselLength - 1) * 100 * -1;
-    // return (this.slidesCount - 1) * 100 * -1;
   }
 
   private get carouselLength(): number {
-    return this.items.length;
+    return this.carouselItems.length;
   }
 }
