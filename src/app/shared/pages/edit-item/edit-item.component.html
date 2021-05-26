@@ -1,0 +1,29 @@
+<div class="form-container">
+  <form
+    routerLinkActive="active"
+    class="contact"
+    [formGroup]="editForm"
+    (ngSubmit)="onFormSubmit()"
+  >
+    <h3>Edit product</h3>
+    <input placeholder="Title" type="text" formControlName="title" />
+    <textarea
+      placeholder="Description"
+      type="text"
+      formControlName="description"
+    ></textarea>
+    <input placeholder="Price" type="number" formControlName="price" />
+    <input placeholder="Image Url" type="text" formControlName="imageUrl" />
+
+    <div class="buttons">
+      <button class="button-cancel" type="button" routerLink="">Cancel</button>
+      <button
+        class="button-submit"
+        type="submit"
+        [disabled]="editForm.invalid || editForm.pristine"
+      >
+        Edit
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap");
+@import "../abstracts/_variables.scss";
+
+*,
+*::after,
+*::before {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%; // 1rem = 10px
+}
+
+body {
+  box-sizing: border-box;
+  background-color: $color-background;
+  color: $color-low-contrast;
+}
+
+.header {
+  height: 100vh;
+}

@@ -1,0 +1,16 @@
+<h1 class="menu-title">Menu items</h1>
+<div class="container">
+  <div *ngFor="let item of catalogItems" class="card-container">
+    <h3 class="card-price">${{ item.price }}</h3>
+    <h2 class="card-title">{{ item.title }}</h2>
+    <figure class="card-image-container">
+      <img [src]="item.imageUrl" alt="product-image" />
+    </figure>
+    <div class="card-buttons">
+      <button class="btn btn--edit" (click)="itemEdit.emit(item)">Edit</button>
+      <button class="btn btn--delete" (click)="deleteProduct(item)">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>

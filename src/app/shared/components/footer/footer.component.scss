@@ -1,0 +1,13 @@
+@import "../../../../sass/abstracts/_variables.scss";
+
+footer p {
+  padding: $spacer-2 0;
+  text-align: center;
+  font-size: 2rem;
+  color: $color-primary;
+  margin-top: 20rem;
+}
+
+footer {
+  bottom: 0;
+}
