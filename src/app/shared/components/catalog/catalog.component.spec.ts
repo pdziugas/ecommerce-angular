@@ -5,12 +5,11 @@ describe('CatalogComponent', () => {
   let component: CatalogComponent;
   let fixture: ComponentFixture<CatalogComponent>;
 
-  // beforeEach(async () => {
-  //   await TestBed.configureTestingModule({
-  //     declarations: [ CatalogComponent ]
-  //   })
-  //   .compileComponents();
-  // });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [CatalogComponent],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CatalogComponent);

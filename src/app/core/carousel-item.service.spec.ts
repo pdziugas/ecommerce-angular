@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http/testing';
 import { CarouselItemService } from './carousel-item.service';
 
-fdescribe('carousel-item service', () => {
+describe('carousel-item service', () => {
   let service: CarouselItemService;
 
   beforeEach(() => {
