@@ -3,9 +3,9 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { CarouselItemService, ICarouselItem } from './carousel-item.service';
+import { CarouselItemService } from './carousel-item.service';
 
-describe('Carousel-Item Service', () => {
+describe('CarouselItemService', () => {
   let httpTestingController: HttpTestingController;
   let carouselItemService: CarouselItemService;
 
@@ -26,61 +26,18 @@ describe('Carousel-Item Service', () => {
   });
 
   describe('fetchCarouselData()', () => {
-    let expectedItems: ICarouselItem[];
-
-    beforeEach(() => {
-      carouselItemService = TestBed.inject(CarouselItemService);
-      expectedItems = [
-        {
-          id: 1,
-          title: 'Phones',
-          category: 'phones',
-          description: 'Look around and shop for phones',
-          imageUrl: 'https://placeimg.com/1280/300/tech/1',
-        },
-        {
-          id: 2,
-          title: 'Computers',
-          category: 'computers',
-          description: 'Look around and shop for computers.',
-          imageUrl: 'https://placeimg.com/1280/300/tech/2',
-        },
-        {
-          id: 3,
-          title: 'Accessories',
-          category: 'accessories',
-          description: 'Shop for necessary tech accessories.',
-          imageUrl: 'https://placeimg.com/1280/300/tech/3',
-        },
-      ] as ICarouselItem[];
-    });
-
-    it('should return expectedItems', () => {
-      carouselItemService
-        .fetchCarouselData()
-        .subscribe((carouselItems) =>
-          expect(carouselItems).toEqual(expectedItems)
-        );
-
-      // CarouselItemService should have made one request to GET items
-      const req = httpTestingController.expectOne(
-        carouselItemService.carouselEndpoint
+    it('should make a GET request and return an array', async () => {
+      const response = carouselItemService.fetchCarouselData().toPromise();
+      const request = httpTestingController.expectOne(
+        'http://localhost:3000/carousel'
       );
-      expect(req.request.method).toEqual('GET');
 
-      // respond with the mock heroes
-      req.flush(expectedItems);
-    });
-
-    it('should be OK returning no items', () => {
-      carouselItemService
-        .fetchCarouselData()
-        .subscribe((items) => expect(items.length).toEqual(0));
-
-      const req = httpTestingController.expectOne(
-        carouselItemService.carouselEndpoint
-      );
-      req.flush([]);
+      expect(request.request.method).toBe('GET');
+      // respond with the mock []
+      // simuliuoja kada grazina itema, galima grazinti errora
+      // galima padaryti
+      request.flush([]);
+      expect(await response).toEqual([]);
     });
   });
 });
