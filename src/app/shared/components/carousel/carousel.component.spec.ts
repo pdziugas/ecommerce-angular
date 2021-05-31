@@ -18,18 +18,16 @@ describe('CarouselComponent', () => {
       { title: 'Phones' },
       { title: 'PCs' },
     ] as ICarouselItem[];
+
+    fixture.detectChanges();
   });
 
   it('should create', () => {
-    fixture.detectChanges();
-
     expect(component).toBeTruthy();
   });
 
   it('should show carousel items when loaded', () => {
     const compiled = fixture.nativeElement;
-
-    fixture.detectChanges();
 
     expect(compiled.textContent).toContain('Phones');
   });
