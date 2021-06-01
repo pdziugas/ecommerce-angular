@@ -7,7 +7,7 @@
   position: relative;
 }
 
-.contact {
+.form {
   background: #f9f9f9;
   padding: 2.5rem;
   margin: 15rem 0;
@@ -15,14 +15,14 @@
   border-radius: 0.5rem;
 }
 
-.contact h3 {
+.form h3 {
   display: block;
   font-size: 3rem;
   font-weight: 400;
   margin-bottom: 1rem;
 }
 
-.contact input {
+.form input {
   width: 100%;
   border: 1px solid #ccc;
   background: #fff;
@@ -30,7 +30,7 @@
   padding: 1rem;
 }
 
-.contact textarea {
+.form textarea {
   width: 100%;
   max-width: 100%;
   resize: vertical;
