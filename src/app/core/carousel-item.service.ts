@@ -16,7 +16,7 @@ export interface ICarouselItem {
 export class CarouselItemService {
   constructor(private httpClient: HttpClient) {}
 
-  private readonly carouselEndpoint = 'http://localhost:3000/carousel';
+  readonly carouselEndpoint = 'http://localhost:3000/carousel';
 
   fetchCarouselData(): Observable<ICarouselItem[]> {
     return this.httpClient.get<ICarouselItem[]>(this.carouselEndpoint);

@@ -30,6 +30,16 @@ describe('NavbarComponent', () => {
     );
   });
 
+  it(`should have a search field with 'item name' inside`, () => {
+    const fixture = TestBed.createComponent(NavbarComponent);
+    fixture.detectChanges();
+    const input = fixture.debugElement.query(By.css('.nav-search--input'));
+    const el = input.nativeElement;
+    el.value = 'item name';
+
+    expect(el.value).toBe('item name');
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });

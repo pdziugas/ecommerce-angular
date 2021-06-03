@@ -16,7 +16,7 @@ export interface IProduct {
 export class ProductsService {
   constructor(private httpClient: HttpClient) {}
 
-  private readonly productsEndpoint = 'http://localhost:3000/products';
+  readonly productsEndpoint = 'http://localhost:3000/products';
 
   fetchProductData(): Observable<IProduct[]> {
     return this.httpClient.get<IProduct[]>(this.productsEndpoint);
