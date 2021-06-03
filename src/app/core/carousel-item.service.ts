@@ -1,14 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface ICarouselItem {
-  id: number;
-  title: string;
-  category: string;
-  description: string;
-  imageUrl: string;
-}
+import { ICarouselItem } from '../store/models/carousel-item.model';
 
 @Injectable({
   providedIn: 'root',

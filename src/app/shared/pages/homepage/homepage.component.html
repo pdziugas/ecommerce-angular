@@ -3,12 +3,12 @@
     *ngIf="carouselItems$ | async as carouselItems; else loadingRef"
     [carouselItems]="carouselItems"
   ></app-carousel>
-  <app-catalog
-    *ngIf="catalogItems$ | async as catalogItems; else loadingRef"
-    [catalogItems]="catalogItems"
+  <app-products
+    *ngIf="productList$ | async as productList; else loadingRef"
+    [productList]="productList"
     (itemDelete)="onDelete($event)"
     (itemEdit)="onEdit($event)"
-  ></app-catalog>
+  ></app-products>
 </ng-container>
 
 <div class="form-container">

@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { ICarouselItem } from '../../../core/carousel-item.service';
+import { ICarouselItem } from '../../../store/models/carousel-item.model';
 
 @Component({
   selector: 'app-carousel',

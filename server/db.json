@@ -115,18 +115,11 @@
       "id": 40
     },
     {
-      "id": 41,
-      "title": "asdfffff",
-      "description": "asdf",
-      "price": 33,
-      "imageUrl": "adsfdasff"
-    },
-    {
-      "title": "asdasdsad",
-      "description": "sadsadsadadsadsasadsadsadadsadsasadsadsadadsadsasadsadsadadsadsasadsadsadadsadsasadsadsadadsadsasadsadsadadsadsasadsadsadadsadsasadsadsadadsadsa\nsadsadsadadsadsasadsadsadadsadsasadsadsadadsadsa\nsadsadsadadsadsa",
-      "price": 111,
-      "imageUrl": "asd",
-      "id": 42
+      "title": "adsf",
+      "description": "adsf",
+      "price": 232,
+      "imageUrl": "asdfds",
+      "id": 41
     }
   ]
 }

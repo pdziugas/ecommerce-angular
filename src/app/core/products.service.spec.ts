@@ -3,7 +3,8 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { ProductsService, IProduct } from './products.service';
+import { ProductsService } from './products.service';
+import { IProduct } from '../store/models/product-item.model';
 
 describe('ProductsService', () => {
   let httpTestingController: HttpTestingController;

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ICarouselItem } from 'src/app/core/carousel-item.service';
+import { ICarouselItem } from '../../../store/models/carousel-item.model';
 import { CarouselComponent } from './carousel.component';
 
 describe('CarouselComponent', () => {

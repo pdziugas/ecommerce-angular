@@ -1,13 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
-import { IProduct } from 'src/app/core/products.service';
+import { IProduct } from '../../../store/models/product-item.model';
 import { EditItemComponent } from '../../pages/edit-item/edit-item.component';
-import { CatalogComponent } from './catalog.component';
+import { ProductComponent } from './products.component';
 
-describe('CatalogComponent', () => {
-  let component: CatalogComponent;
-  let fixture: ComponentFixture<CatalogComponent>;
+describe('ProductComponent', () => {
+  let component: ProductComponent;
+  let fixture: ComponentFixture<ProductComponent>;
   let expectedItem: IProduct;
 
   const ui = {
@@ -18,14 +18,14 @@ describe('CatalogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CatalogComponent, EditItemComponent],
+      declarations: [ProductComponent, EditItemComponent],
       imports: [RouterTestingModule],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CatalogComponent);
+    fixture = TestBed.createComponent(ProductComponent);
     component = fixture.componentInstance;
 
-    component.catalogItems = [
+    component.productList = [
       {
         title: 'testItem1',
         description: 'testItem1 testItem1 testItem1',
@@ -57,7 +57,7 @@ describe('CatalogComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should show catalog items when loaded', () => {
+  it('should show product items when loaded', () => {
     const compiled = fixture.nativeElement;
 
     expect(compiled.textContent).toContain('testItem1');

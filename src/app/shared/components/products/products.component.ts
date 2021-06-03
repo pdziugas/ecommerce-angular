@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IProduct } from 'src/app/core/products.service';
+import { IProduct } from '../../../store/models/product-item.model';
 
 @Component({
-  selector: 'app-catalog',
-  templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss'],
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.scss'],
 })
-export class CatalogComponent {
-  @Input() catalogItems: IProduct[] = [];
+export class ProductComponent {
+  @Input() productList: IProduct[] = [];
   @Output() itemEdit = new EventEmitter<IProduct>();
   @Output() itemDelete = new EventEmitter<IProduct>();
 

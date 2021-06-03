@@ -1,26 +1,59 @@
-import { Component } from '@angular/core';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { BehaviorSubject } from 'rxjs';
-import { delay, switchMap } from 'rxjs/operators';
-import { CarouselItemService } from '../../../core/carousel-item.service';
-import { IProduct, ProductsService } from '../../../core/products.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { BehaviorSubject } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import {
+  selectCarouselFailure,
+  selectCarouselItems,
+  selectCarouselLoading,
+} from 'src/app/store/carousel/carousel.selectors';
+import { productsActions } from 'src/app/store/products/products.actions';
+import {
+  selectProductList,
+  selectProductListFail,
+  selectProductListLoading,
+  selectProductsState,
+} from 'src/app/store/products/products.selectors';
+import { ProductsService } from '../../../core/products.service';
+import * as CarouselActions from '../../../store/carousel/carousel.actions';
+import * as ProductActions from '../../../store/products/products.actions';
+import { IProduct } from '../../../store/models/product-item.model';
+import { AppState } from '../../../store/store';
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss'],
 })
-export class HomepageComponent {
-  carouselItems$ = this.carouselItemService
-    .fetchCarouselData()
-    .pipe(delay(2000));
+export class HomepageComponent implements OnInit {
+  constructor(
+    private productsService: ProductsService,
+    private fb: FormBuilder,
+    private router: Router,
+    private store: Store<AppState>
+  ) {}
+
+  carouselItems$ = this.store.select(selectCarouselItems);
+  carouselLoading$ = this.store.select(selectCarouselLoading);
+  carouselError$ = this.store.select(selectCarouselFailure);
+
+  productList$ = this.store.select(selectProductList);
+  productsLoading$ = this.store.select(selectProductListLoading);
+  productsError$ = this.store.select(selectProductListFail);
+
+  ngOnInit() {
+    this.store.dispatch(CarouselActions.carouselActions.load());
+    this.store.dispatch(ProductActions.productsActions.load());
+  }
 
   refreshItems$ = new BehaviorSubject<void>(undefined);
 
-  catalogItems$ = this.refreshItems$.pipe(
-    switchMap(() => this.productsService.fetchProductData())
-  );
+  // productList$ = this.refreshItems$.pipe(
+  //   switchMap(() => this.productsService.fetchProductData())
+  // );
 
   // reactive form
   form = this.fb.group({
@@ -29,13 +62,6 @@ export class HomepageComponent {
     price: [null, [Validators.required]],
     imageUrl: [null, [Validators.required]],
   });
-
-  constructor(
-    private carouselItemService: CarouselItemService,
-    private productsService: ProductsService,
-    private fb: FormBuilder,
-    private router: Router
-  ) {}
 
   onFormSubmit(): void {
     this.productsService.postItemData(this.form.value).subscribe(() => {
