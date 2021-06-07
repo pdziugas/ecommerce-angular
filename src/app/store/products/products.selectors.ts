@@ -18,3 +18,8 @@ export const selectProductListFail = createSelector(
   selectProductsState,
   (state) => state.error
 );
+
+export const selectProduct = createSelector(
+  selectProductsState,
+  (state) => state.product
+);
